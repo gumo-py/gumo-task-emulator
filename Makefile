@@ -1,4 +1,4 @@
-package_name = gumo-task_emulator
+package_name = gumo-task-emulator
 
 export PATH := venv/bin:$(shell echo ${PATH})
 
