@@ -20,7 +20,7 @@ emulator_api_blueprint = flask.Blueprint('task-emulator', __name__)
 
 
 class TasksView(flask.views.MethodView):
-    _repository  = injector.get(TaskRepository)  # type: TaskRepository
+    _repository = injector.get(TaskRepository)  # type: TaskRepository
 
     def get(self):
         tasks = self._repository.fetch_tasks(limit=100)

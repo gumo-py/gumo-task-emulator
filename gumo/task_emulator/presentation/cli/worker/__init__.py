@@ -1,6 +1,5 @@
 import threading
 import time
-import datetime
 
 from logging import getLogger
 from typing import Optional
@@ -66,8 +65,8 @@ class RoutineWorker:
 
 
 class NoopTask(RoutineWorker):
-   def run(self):
-       time.sleep(1)
+    def run(self):
+        time.sleep(1)
 
 
 class WatchNewTask(RoutineWorker):

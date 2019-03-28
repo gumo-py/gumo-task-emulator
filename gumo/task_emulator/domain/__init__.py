@@ -62,9 +62,12 @@ class ProcessHistory:
     error_message: Optional[str] = None
 
     def is_succeeded(self) -> bool:
-        return self.status_code is not None and \
-               self.error_message is None and \
-               200 <= self.status_code < 400
+        if self.status_code is None:
+            return False
+        if self.error_message is not None:
+            return False
+
+        return 200 <= self.status_code < 400
 
 
 @dataclasses.dataclass(frozen=True)

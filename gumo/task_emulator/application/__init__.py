@@ -1,6 +1,3 @@
-import os
-import urllib.request
-import urllib.error
 import datetime
 import enum
 import dataclasses
@@ -13,7 +10,6 @@ from gumo.task_emulator.application.task.repository import TaskProcessRepository
 from gumo.task_emulator.domain import GumoTaskProcess
 from gumo.task_emulator.domain import TaskState
 from gumo.task_emulator.domain import ProcessHistory
-from gumo.task_emulator.domain import ProcessRequest
 from gumo.task_emulator.application.task.encoder import TaskProcessJSONEncoder
 
 logger = getLogger(__name__)

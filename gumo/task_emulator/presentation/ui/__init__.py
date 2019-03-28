@@ -46,4 +46,3 @@ emulator_ui_blueprint.add_url_rule(
     view_func=QueueDetailUI.as_view(name='dashboard/queue-detail'),
     methods=['GET']
 )
-
