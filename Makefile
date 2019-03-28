@@ -1,5 +1,13 @@
 package_name = gumo-task_emulator
 
+export PATH := venv/bin:$(shell echo ${PATH})
+
+.PHONY: setup
+setup:
+	[ -d venv ] || python3 -m venv venv
+	pip3 install --ignore-installed twine wheel pytest pip-tools
+	pip3 install --ignore-installed -r requirements.txt
+
 .PHONY: deploy
 deploy: clean build
 	python -m twine upload \
@@ -28,8 +36,9 @@ clean:
 
 .PHONY: pip-compile
 pip-compile:
-	pip-compile --output-file requirements.txt \
-		requirements.in \
-		../core/requirements.txt \
-		../datastore/requirements.txt \
-		../task/requirements.txt
+	pip-compile \
+		--upgrade-package gumo-core \
+		--upgrade-package gumo-datastore \
+		--upgrade-package gumo-task \
+		--output-file requirements.txt \
+		requirements.in
