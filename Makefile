@@ -43,3 +43,9 @@ pip-compile:
 		--output-file requirements.txt \
 		requirements.in
 	pip3 install --ignore-installed -r requirements.txt
+
+.PHONY: run
+run: clean build
+	pip uninstall -y ${package_name}
+	pip3 install dist/${package_name}*.tar.gz
+	python sample/task_emulator_server.py
