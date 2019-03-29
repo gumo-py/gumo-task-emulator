@@ -42,3 +42,4 @@ pip-compile:
 		--upgrade-package gumo-task \
 		--output-file requirements.txt \
 		requirements.in
+	pip3 install --ignore-installed -r requirements.txt
