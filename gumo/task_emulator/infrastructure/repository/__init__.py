@@ -6,7 +6,7 @@ from typing import List
 from typing import Optional
 
 from gumo.core.exceptions import ObjectNotoFoundError
-from gumo.datastore import EntityKey
+from gumo.core import EntityKey
 from gumo.datastore.infrastructure import DatastoreRepositoryMixin
 from gumo.task.domain import GumoTask
 from gumo.task.infrastructure.mapper import DatastoreGumoTaskMapper

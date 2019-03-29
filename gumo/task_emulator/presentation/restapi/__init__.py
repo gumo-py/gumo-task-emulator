@@ -3,7 +3,7 @@ import flask.views
 
 from gumo.core.injector import injector
 
-from gumo.datastore import EntityKeyFactory
+from gumo.core import EntityKeyFactory
 
 from gumo.task_emulator.application import TaskExecuteService
 from gumo.task_emulator.application import TaskMarkAsFailedService

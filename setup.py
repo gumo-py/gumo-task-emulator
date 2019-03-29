@@ -2,12 +2,12 @@ import setuptools
 
 
 name = 'gumo-task-emulator'
-version = '0.0.8'
+version = '0.0.9'
 description = 'Gumo Task Emulator Library'
 dependencies = [
-    'gumo-core >= 0.0.9',
-    'gumo-datastore >= 0.0.9',
-    'gumo-task >= 0.0.7',
+    'gumo-core >= 0.0.13',
+    'gumo-datastore >= 0.0.11',
+    'gumo-task >= 0.0.8',
     'Flask >= 1.0.2',
     'flasgger >= 0.9.1',
 ]
@@ -22,19 +22,15 @@ packages = [
 
 namespaces = ['gumo']
 
-package_data = {
-    '': ['*.yml']
-}
-
 setuptools.setup(
     name=name,
     version=version,
     author="Gumo Project Team",
-    author_email="gumo-organizer@levii.co.jp",
+    author_email="gumo-py@googlegroups.com",
     description=description,
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/gumo-py/gumo",
+    url="https://github.com/gumo-py/gumo-task-emulator",
     packages=packages,
     namespaces=namespaces,
     classifiers=[
@@ -44,5 +40,7 @@ setuptools.setup(
     ],
     install_requires=dependencies,
     include_package_data=True,
-    package_data=package_data,
+    package_data={
+        'gumo': ['*.yml', '*.html']
+    },
 )
