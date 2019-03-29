@@ -22,10 +22,6 @@ packages = [
 
 namespaces = ['gumo']
 
-package_data = {
-    '': ['*.yml']
-}
-
 setuptools.setup(
     name=name,
     version=version,
@@ -44,5 +40,7 @@ setuptools.setup(
     ],
     install_requires=dependencies,
     include_package_data=True,
-    package_data=package_data,
+    package_data={
+        'gumo': ['*.yml', '*.html']
+    },
 )
