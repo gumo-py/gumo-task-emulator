@@ -2,7 +2,7 @@ import setuptools
 
 
 name = 'gumo-task-emulator'
-version = '0.0.9'
+version = '0.0.10'
 description = 'Gumo Task Emulator Library'
 dependencies = [
     'gumo-core >= 0.0.13',
@@ -40,7 +40,4 @@ setuptools.setup(
     ],
     install_requires=dependencies,
     include_package_data=True,
-    package_data={
-        'gumo': ['*.yml', '*.html']
-    },
 )
