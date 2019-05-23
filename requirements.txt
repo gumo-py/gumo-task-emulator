@@ -30,7 +30,7 @@ httplib2==0.12.1          # via google-api-python-client, google-auth-httplib2
 idna==2.8                 # via requests
 injector==0.15.0          # via gumo-core
 itsdangerous==1.1.0       # via flask
-jinja2==2.10.1
+jinja2==2.10.1            # via flask
 jsonschema==3.0.1         # via flasgger
 markupsafe==1.1.1         # via jinja2
 mistune==0.8.4            # via flasgger
@@ -44,5 +44,5 @@ requests==2.21.0          # via google-api-core
 rsa==4.0                  # via google-auth
 six==1.12.0               # via flasgger, google-api-core, google-api-python-client, google-auth, google-resumable-media, grpcio, jsonschema, protobuf, pyrsistent
 uritemplate==3.0.0        # via google-api-python-client
-urllib3==1.24.1           # via requests
+urllib3==1.24.2           # via requests
 werkzeug==0.15.1          # via flask
