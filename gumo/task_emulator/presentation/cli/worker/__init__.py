@@ -1,7 +1,7 @@
 import threading
 import time
+import logging
 
-from logging import getLogger
 from typing import Optional
 from gumo.core.injector import injector
 
@@ -11,7 +11,7 @@ from gumo.task_emulator.application.task.repository import TaskProcessRepository
 from gumo.task_emulator.domain import TaskState
 
 
-logger = getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class RoutineWorkerStop(RuntimeError):
@@ -93,13 +93,18 @@ class BackgroundWorker:
     _instance = None
 
     @classmethod
-    def get_instance(cls):
+    def get_instance(cls, verbose_log: bool = False):
         if cls._instance is None:
-            cls._instance = cls()
+            cls._instance = cls(verbose_log=verbose_log)
 
         return cls._instance
 
-    def __init__(self):
+    def __init__(self, verbose_log: bool = False):
+        if verbose_log:
+            logger.setLevel(level=logging.INFO)
+        else:
+            logger.setLevel(level=logging.DEBUG)
+
         self._noop_worker = NoopTask()
         self._watch_new_task_worker = WatchNewTask()
         self._execute_task_worker = ExecuteTask()
