@@ -118,8 +118,8 @@ class BackgroundWorker:
 
         self._started = True
         self._noop_worker.start(daemon=False, interval_seconds=100)
-        self._watch_new_task_worker.start(daemon=True, interval_seconds=2)
-        self._execute_task_worker.start(daemon=True, interval_seconds=3)
+        self._watch_new_task_worker.start(daemon=False, interval_seconds=2)
+        self._execute_task_worker.start(daemon=False, interval_seconds=3)
 
     def stop(self):
         if not self._started:
