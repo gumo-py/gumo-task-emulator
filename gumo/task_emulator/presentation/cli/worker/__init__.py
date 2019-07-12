@@ -81,7 +81,6 @@ class ExecuteTask(RoutineWorker):
         execute_service = injector.get(TaskExecuteService)  # type: TaskExecuteService
 
         task_processes = repository.fetch_tasks_by_state(state=TaskState.QUEUED)
-        logger.debug(f'{len(task_processes)} items are waiting.')
 
         for task in task_processes:
             logger.debug(f'task.key={task.key} is executing')
@@ -111,9 +110,10 @@ class BackgroundWorker:
 
         self._started = False
 
-    def start(self):
+    def start(self, verbose: bool = False):
         if self._started:
-            logger.debug(f'{self} is already started.')
+            if verbose:
+                logger.debug(f'{self} is already started.')
             return
 
         self._started = True
