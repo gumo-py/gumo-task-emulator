@@ -36,13 +36,13 @@ class QueueDetailUI(flask.views.MethodView):
 
 
 emulator_ui_blueprint.add_url_rule(
-    '/',
+    '/task_emulator/dashboard',
     view_func=QueueUI.as_view(name='dashboard'),
     methods=['GET']
 )
 
 emulator_ui_blueprint.add_url_rule(
-    '/detail/<queue_name>',
+    '/task_emulator/detail/<queue_name>',
     view_func=QueueDetailUI.as_view(name='dashboard/queue-detail'),
     methods=['GET']
 )

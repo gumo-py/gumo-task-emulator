@@ -31,6 +31,10 @@ def task_emulator_app():
     for blueprint in task_emulator_flask_blueprints():
         flask_app.register_blueprint(blueprint)
 
+    @flask_app.route('/')
+    def root():
+        return flask.redirect('/task_emulator/dashboard')
+
     if os.path.exists(apidoc_dir):
         flask_app.config['SWAGGER'] = {
             'title': 'Task Emulator',

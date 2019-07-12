@@ -13,7 +13,7 @@
     </tr>
     {% for queueStatus in summary %}
     <tr>
-        <td><a href="/detail/{{queueStatus.queue_name}}">{{queueStatus.queue_name}}</a></td>
+        <td><a href="/task_emulator/detail/{{queueStatus.queue_name}}">{{queueStatus.queue_name}}</a></td>
         <td>{{queueStatus.queued_tasks_count}}</td>
         <td>{{queueStatus.processing_tasks_count}}</td>
         <td>{{queueStatus.succeeded_tasks_count}}</td>
