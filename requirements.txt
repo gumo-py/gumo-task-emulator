@@ -23,9 +23,9 @@ google-resumable-media==0.3.2  # via google-cloud-storage
 googleapis-common-protos[grpc]==1.5.9  # via google-api-core, grpc-google-iam-v1
 grpc-google-iam-v1==0.11.4  # via google-cloud-tasks
 grpcio==1.19.0            # via google-api-core, googleapis-common-protos, grpc-google-iam-v1
-gumo-core==0.0.31
-gumo-datastore==0.0.16
-gumo-task==0.0.12
+gumo-core==0.1.0a6
+gumo-datastore==0.1.0a1
+gumo-task==0.1.0a2
 httplib2==0.12.1          # via google-api-python-client, google-auth-httplib2
 idna==2.8                 # via requests
 injector==0.15.0          # via gumo-core
