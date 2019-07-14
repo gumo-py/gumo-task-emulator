@@ -48,4 +48,6 @@ pip-compile:
 run: clean build
 	pip uninstall -y ${package_name}
 	pip3 install dist/${package_name}*.tar.gz
-	python sample/task_emulator_server.py
+	GOOGLE_CLOUD_PROJECT=gumo-task-emulator \
+		CLOUD_TASKS_EMULATOR_ENABLED=true \
+		python sample/task_emulator_server.py

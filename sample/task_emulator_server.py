@@ -1,21 +1,19 @@
+#
+# Usage:
+# $ make run           # for server process
+# $ WORKER=1 make run  # for worker process
+#
+
 import os
 import sys
 import logging
 
-from gumo.core import configure as core_configure
-from gumo.datastore import configure as datastore_configure
-from gumo.task import configure as task_configure
 from gumo.task_emulator import configure as task_emulator_configure
 from gumo.task_emulator import task_emulator_app
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-
-# Application framework initialization process.
-core_configure()
-datastore_configure()
-task_configure()
 
 task_emulator_configure(
     server_host=os.environ.get('SERVER_HOST'),
