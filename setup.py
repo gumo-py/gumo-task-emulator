@@ -9,7 +9,6 @@ dependencies = [
     'gumo-datastore >= 0.1.0',
     'gumo-task >= 0.1.0',
     'Flask >= 1.0.2',
-    'flasgger >= 0.9.1',
 ]
 
 with open("README.md", "r") as fh:
