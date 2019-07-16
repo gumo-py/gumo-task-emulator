@@ -49,5 +49,6 @@ run: clean build
 	pip uninstall -y ${package_name}
 	pip3 install dist/${package_name}*.tar.gz
 	GOOGLE_CLOUD_PROJECT=gumo-task-emulator \
+		DATASTORE_EMULATOR_HOST=127.0.0.1:8081 \
 		CLOUD_TASKS_EMULATOR_ENABLED=true \
 		python sample/task_emulator_server.py

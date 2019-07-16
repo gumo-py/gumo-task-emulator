@@ -2,14 +2,13 @@ import setuptools
 
 
 name = 'gumo-task-emulator'
-version = '0.1.0a3'
+version = '0.1.0'
 description = 'Gumo Task Emulator Library'
 dependencies = [
-    'gumo-core >= 0.1.0a7',
-    'gumo-datastore >= 0.1.0a3',
-    'gumo-task >= 0.1.0a3',
+    'gumo-core >= 0.1.0',
+    'gumo-datastore >= 0.1.0',
+    'gumo-task >= 0.1.0',
     'Flask >= 1.0.2',
-    'flasgger >= 0.9.1',
 ]
 
 with open("README.md", "r") as fh:
