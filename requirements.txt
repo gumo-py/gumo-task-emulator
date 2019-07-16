@@ -18,19 +18,19 @@ google-auth==1.6.3        # via google-api-core, google-api-python-client, googl
 google-cloud-core==0.29.1  # via google-cloud-datastore, google-cloud-storage
 google-cloud-datastore==1.7.3  # via gumo-datastore
 google-cloud-storage==1.14.0  # via gumo-core
-google-cloud-tasks==0.3.0  # via gumo-task
+google-cloud-tasks==1.1.0  # via gumo-task
 google-resumable-media==0.3.2  # via google-cloud-storage
 googleapis-common-protos[grpc]==1.5.9  # via google-api-core, grpc-google-iam-v1
 grpc-google-iam-v1==0.11.4  # via google-cloud-tasks
 grpcio==1.19.0            # via google-api-core, googleapis-common-protos, grpc-google-iam-v1
-gumo-core==0.0.18
-gumo-datastore==0.0.11
-gumo-task==0.0.10
+gumo-core==0.1.0a7
+gumo-datastore==0.1.0a3
+gumo-task==0.1.0a3
 httplib2==0.12.1          # via google-api-python-client, google-auth-httplib2
 idna==2.8                 # via requests
 injector==0.15.0          # via gumo-core
 itsdangerous==1.1.0       # via flask
-jinja2==2.10.1
+jinja2==2.10.1            # via flask
 jsonschema==3.0.1         # via flasgger
 markupsafe==1.1.1         # via jinja2
 mistune==0.8.4            # via flasgger

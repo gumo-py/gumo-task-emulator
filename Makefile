@@ -8,14 +8,14 @@ setup:
 	pip3 install --ignore-installed twine wheel pytest pip-tools
 	pip3 install --ignore-installed -r requirements.txt
 
-.PHONY: deploy
-deploy: clean build
+.PHONY: release
+release: clean build
 	python -m twine upload \
 		--repository-url https://upload.pypi.org/legacy/ \
 		dist/*
 
-.PHONY: test-deploy
-test-deploy: clean build
+.PHONY: test-release
+test-release: clean build
 	python -m twine upload \
 		--repository-url https://test.pypi.org/legacy/ \
 		dist/*
@@ -48,4 +48,6 @@ pip-compile:
 run: clean build
 	pip uninstall -y ${package_name}
 	pip3 install dist/${package_name}*.tar.gz
-	python sample/task_emulator_server.py
+	GOOGLE_CLOUD_PROJECT=gumo-task-emulator \
+		CLOUD_TASKS_EMULATOR_ENABLED=true \
+		python sample/task_emulator_server.py

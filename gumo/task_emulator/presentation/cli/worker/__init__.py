@@ -1,7 +1,7 @@
 import threading
 import time
+import logging
 
-from logging import getLogger
 from typing import Optional
 from gumo.core.injector import injector
 
@@ -11,7 +11,7 @@ from gumo.task_emulator.application.task.repository import TaskProcessRepository
 from gumo.task_emulator.domain import TaskState
 
 
-logger = getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class RoutineWorkerStop(RuntimeError):
@@ -81,7 +81,6 @@ class ExecuteTask(RoutineWorker):
         execute_service = injector.get(TaskExecuteService)  # type: TaskExecuteService
 
         task_processes = repository.fetch_tasks_by_state(state=TaskState.QUEUED)
-        logger.debug(f'{len(task_processes)} items are waiting.')
 
         for task in task_processes:
             logger.debug(f'task.key={task.key} is executing')
@@ -93,28 +92,34 @@ class BackgroundWorker:
     _instance = None
 
     @classmethod
-    def get_instance(cls):
+    def get_instance(cls, verbose_log: bool = False):
         if cls._instance is None:
-            cls._instance = cls()
+            cls._instance = cls(verbose_log=verbose_log)
 
         return cls._instance
 
-    def __init__(self):
+    def __init__(self, verbose_log: bool = False):
+        if verbose_log:
+            logger.setLevel(level=logging.INFO)
+        else:
+            logger.setLevel(level=logging.DEBUG)
+
         self._noop_worker = NoopTask()
         self._watch_new_task_worker = WatchNewTask()
         self._execute_task_worker = ExecuteTask()
 
         self._started = False
 
-    def start(self):
+    def start(self, verbose: bool = False):
         if self._started:
-            logger.debug(f'{self} is already started.')
+            if verbose:
+                logger.debug(f'{self} is already started.')
             return
 
         self._started = True
         self._noop_worker.start(daemon=False, interval_seconds=100)
-        self._watch_new_task_worker.start(daemon=True, interval_seconds=2)
-        self._execute_task_worker.start(daemon=True, interval_seconds=3)
+        self._watch_new_task_worker.start(daemon=False, interval_seconds=2)
+        self._execute_task_worker.start(daemon=False, interval_seconds=3)
 
     def stop(self):
         if not self._started:

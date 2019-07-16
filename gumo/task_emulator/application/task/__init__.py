@@ -31,8 +31,6 @@ class TaskProcessBulkCreateService:
         converted_tasks = []
         convert_skipped_tasks = []
 
-        logger.info(f'Convert from GumoTask to GumoTaskProcess {len(tasks)} items.')
-
         for task in tasks:
             logger.debug(f'Convert start Task.key={task.key}')
             task_process = self._build_task_process(task=task)
