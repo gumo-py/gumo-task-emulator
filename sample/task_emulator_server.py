@@ -27,5 +27,5 @@ if __name__ == '__main__':
     if os.environ.get('WORKER'):
         worker.start()
     else:
-        server_port = os.environ.get('TASK_EMULATOR_PORT', '8083')
+        server_port = os.environ.get('SERVER_PORT')
         app.run(host='0.0.0.0', port=server_port, debug=True)
