@@ -50,5 +50,7 @@ run: clean build
 	pip3 install dist/${package_name}*.tar.gz
 	GOOGLE_CLOUD_PROJECT=gumo-task-emulator \
 		DATASTORE_EMULATOR_HOST=127.0.0.1:8081 \
+		SERVER_HOST=127.0.0.1 \
+		SERVER_PORT=8083 \
 		CLOUD_TASKS_EMULATOR_ENABLED=true \
 		python sample/task_emulator_server.py

@@ -76,6 +76,7 @@ class TaskExecuteRunnerImpl(TaskExecuteRunner):
         except urllib.error.HTTPError as e:
             status_code = e.code
             error_message = e
+            response_body = e.read().decode('utf-8')
         except urllib.error.URLError as e:
             error_message = e
         except Exception as e:
