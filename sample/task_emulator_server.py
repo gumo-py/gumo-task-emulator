@@ -8,6 +8,8 @@ import os
 import sys
 import logging
 
+from gumo.task import enqueue
+
 from gumo.task_emulator import configure as task_emulator_configure
 from gumo.task_emulator import task_emulator_app
 
@@ -21,6 +23,24 @@ task_emulator_configure(
 )
 
 app, worker = task_emulator_app()
+
+
+@app.route('/enqueue')
+def enqueue_handler():
+    enqueue(
+        url='/hello',
+        method='POST',
+        payload={
+            'hello': 'sample message'
+        }
+    )
+
+    return 'enqueued'
+
+
+@app.route('/hello', methods=['GET', 'POST'])
+def hello_handler():
+    return 'Hello, World.'
 
 
 if __name__ == '__main__':
