@@ -25,7 +25,7 @@ class TaskExecuteRunnerImpl(TaskExecuteRunner):
     def _build_request_headers(self, task_process: GumoTaskProcess) -> dict:
         headers = {
             'Content-Type': 'application/json',
-            'X-AppEngine-QueueName': '',
+            'X-AppEngine-QueueName': task_process.queue_name,
             'X-AppEngine-TaskName': task_process.key.name(),
             'X-AppEngine-TaskRetryCount': str(task_process.attempts),
             'X-AppEngine-TaskExecutionCount': str(task_process.attempts + 1),
