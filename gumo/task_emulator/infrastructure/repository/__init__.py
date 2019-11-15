@@ -9,7 +9,7 @@ from gumo.core.exceptions import ObjectNotoFoundError
 from gumo.core import EntityKey
 from gumo.datastore.infrastructure import DatastoreRepositoryMixin
 from gumo.task.domain import GumoTask
-from gumo.task.infrastructure.mapper import DatastoreGumoTaskMapper
+from gumo.task.infrastructure.repository.mapper import DatastoreGumoTaskMapper
 
 from gumo.task_emulator.domain import GumoTaskProcess
 from gumo.task_emulator.domain import TaskState
@@ -41,7 +41,6 @@ class DatastoreTaskRepository(TaskRepository, DatastoreRepositoryMixin):
 
         for datastore_entity in query.fetch(limit=limit):
             tasks.append(self._task_mapper.to_entity(
-                key=self.entity_key_mapper.to_entity_key(datastore_key=datastore_entity.key),
                 doc=datastore_entity,
             ))
 

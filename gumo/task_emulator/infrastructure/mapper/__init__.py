@@ -9,8 +9,11 @@ from gumo.task_emulator.domain import TaskState
 
 
 class DatastoreGumoProcessHistoryMapper:
-    def to_datastore_entity(self, process_history: ProcessHistory) -> dict:
-        j = {
+    def to_datastore_entity(self, process_history: ProcessHistory) -> DatastoreEntity:
+        doc = DatastoreEntity(exclude_from_indexes=[
+            "data", "request_headers", "request_body", "response_headers", "response_body", "error_message"
+        ])
+        doc.update({
             'started_at': process_history.started_at,
             'duration_seconds': process_history.duration_seconds,
             'method': process_history.method,
@@ -22,8 +25,8 @@ class DatastoreGumoProcessHistoryMapper:
             'response_headers': json.dumps(process_history.response_headers),
             'response_body': process_history.response_body,
             'error_message': process_history.error_message,
-        }
-        return j
+        })
+        return doc
 
     def to_entity(self, doc: dict) -> ProcessHistory:
         return ProcessHistory(
@@ -52,7 +55,10 @@ class DatastoreGumoTaskProcessMapper:
         self._process_history_mapper = process_history_mapper
 
     def to_datastore_entity(self, task_process: GumoTaskProcess) -> DatastoreEntity:
-        entity = DatastoreEntity(key=self._entity_key_mapper.to_datastore_key(entity_key=task_process.key))
+        entity = DatastoreEntity(
+            key=self._entity_key_mapper.to_datastore_key(entity_key=task_process.key),
+            exclude_from_indexes=["payload"]
+        )
         entity.update({
             'relative_uri': task_process.relative_uri,
             'method': task_process.method,
