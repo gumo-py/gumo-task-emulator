@@ -27,7 +27,7 @@ class TaskProcessBulkCreateService:
         self._task_process_factory = task_process_factory
 
     def execute(self) -> dict:
-        tasks = self._task_repository.fetch_tasks(limit=50)
+        tasks = self._task_repository.fetch_default_routing_tasks(limit=50)
         converted_tasks = []
         convert_skipped_tasks = []
 

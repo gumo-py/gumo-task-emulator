@@ -12,6 +12,9 @@ class TaskRepository:
     def fetch_tasks(self, limit: int = 10) -> List[GumoTask]:
         raise NotImplementedError()
 
+    def fetch_default_routing_tasks(self, limit: int = 10) -> List[GumoTask]:
+        raise NotImplementedError()
+
     def save(self, task: GumoTask) -> GumoTask:
         raise NotImplementedError()
 
