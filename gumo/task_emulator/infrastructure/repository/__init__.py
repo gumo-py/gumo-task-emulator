@@ -49,6 +49,14 @@ class DatastoreTaskRepository(TaskRepository, DatastoreRepositoryMixin):
     def fetch_tasks(self, limit: int = 10) -> List[GumoTask]:
         return self._fetch_list(query=self._build_query(), limit=limit)
 
+    def fetch_default_routing_tasks(self, limit: int = 10) -> List[GumoTask]:
+        query = self._build_query()
+        query.add_filter('app_engine_routing.service', '=', None)
+        query.add_filter('app_engine_routing.version', '=', None)
+        query.add_filter('app_engine_routing.instance', '=', None)
+
+        return self._fetch_list(query=query, limit=limit)
+
     def delete(self, key: EntityKey):
         datastore_key = self.entity_key_mapper.to_datastore_key(entity_key=key)
         self.datastore_client.delete(datastore_key)
