@@ -7,7 +7,7 @@ description = 'Gumo Task Emulator Library'
 dependencies = [
     'gumo-core >= 0.1.0',
     'gumo-datastore >= 0.1.0',
-    'gumo-task >= 0.2.1',
+    'gumo-task >= 0.2.4a0',
     'Flask >= 1.0.2',
 ]
 
