@@ -36,6 +36,9 @@ class TaskExecuteRunnerImpl(TaskExecuteRunner):
             previous_history = task_process.histories[-1]
             headers['X-AppEngine-TaskPreviousResponse'] = str(previous_history.status_code)
 
+        if isinstance(task_process.headers, dict):
+            headers.update(task_process.headers)
+
         return headers
 
     def _build_request(self, task_process: GumoTaskProcess) -> ProcessRequest:
