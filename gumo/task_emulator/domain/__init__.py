@@ -79,6 +79,7 @@ class GumoTaskProcess:
     relative_uri: str
     method: str = 'POST'
     payload: Optional[dict] = dataclasses.field(default_factory=dict)
+    headers: Optional[dict] = dataclasses.field(default_factory=dict)
     schedule_time: datetime.datetime = dataclasses.field(default_factory=datetime.datetime.utcnow)
     created_at: datetime.datetime = dataclasses.field(default_factory=datetime.datetime.utcnow)
     updated_at: datetime.datetime = dataclasses.field(default_factory=datetime.datetime.utcnow)
@@ -190,6 +191,7 @@ class GumoTaskProcessFactory:
             relative_uri=task.relative_uri,
             method=task.method,
             payload=task.payload,
+            headers=task.headers,
             schedule_time=task.schedule_time,
             created_at=task.created_at,
             updated_at=now,
