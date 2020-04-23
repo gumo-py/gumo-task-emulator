@@ -128,7 +128,9 @@ class DatastoreTaskProcessRepository(TaskProcessRepository, DatastoreRepositoryM
 
             keys = [task.key for task in query.fetch()]
             logger.info(f'cleanup target keys={len(keys)} items')
-            self.datastore_client.delete_multi(keys=keys)
+            while keys:
+                self.datastore_client.delete_multi(keys=keys[:500])
+                keys = keys[500:]
 
 
 class DatastoreTaskProcessSummaryRepository(TaskProcessSummaryRepository, DatastoreRepositoryMixin):
