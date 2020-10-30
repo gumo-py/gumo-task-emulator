@@ -2,12 +2,12 @@ import setuptools
 
 
 name = 'gumo-task-emulator'
-version = '0.3.0a0'
+version = '0.3.0'
 description = 'Gumo Task Emulator Library'
 dependencies = [
     'gumo-core >= 0.1.0',
-    'gumo-datastore >= 0.2.0a0',
-    'gumo-task >= 0.3.2b1',
+    'gumo-datastore >= 0.2.0',
+    'gumo-task >= 0.3.2',
     'Flask >= 1.0.2',
 ]
 
